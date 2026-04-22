@@ -1,4 +1,32 @@
 ﻿<Properties StartupConfiguration="{9C269DEA-6C58-48B5-B2F0-C38DC9CD36F3}|https">
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Dockerfile.config">
+    <Files>
+      <File FileName="RockPaperScissorsWeb/Controllers/HomeController.cs" Line="64" Column="1" />
+      <File FileName="RockPaperScissorsWeb/Views/Home/Index.cshtml" Line="156" Column="2" />
+      <File FileName="Dockerfile.config" Line="17" Column="50" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Option id="ShowAllFiles" value="True" />
+          <Node name="RockPaperScissorsWeb" selected="True">
+            <Node name="RockPaperScissorsWeb" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Home" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.RockPaperScissorsWeb PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
