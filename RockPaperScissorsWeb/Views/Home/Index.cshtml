@@ -1,0 +1,156 @@
+﻿@{
+    ViewData["Title"] = "Rock Paper Scissors";
+}
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial;
+        background: linear-gradient(to bottom right, #8e2de2, #4a00e0);
+        color: white;
+        text-align: center;
+    }
+
+    .top-name {
+        position: fixed;
+        top: 70px;
+        left: 20px;
+        font-size: 20px;
+    }
+
+    .start-screen {
+        margin-top: 150px;
+    }
+
+    .start-btn {
+        margin-top: 20px;
+        padding: 12px 25px;
+        font-size: 18px;
+        border-radius: 12px;
+        border: none;
+        background: white;
+        cursor: pointer;
+    }
+
+    .container {
+        margin-top: 60px;
+    }
+
+    h1 {
+        font-size: 60px;
+        margin-bottom: 40px;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 60px;
+    }
+
+    .choice {
+        background: rgba(255,255,255,0.9);
+        color: black;
+        border-radius: 20px;
+        padding: 30px;
+        width: 150px;
+        cursor: pointer;
+        transition: 0.3s;
+        font-size: 20px;
+    }
+
+        .choice:hover {
+            transform: scale(1.15);
+        }
+
+    .hand {
+        font-size: 50px;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .result {
+        margin-top: 40px;
+        font-size: 24px;
+    }
+
+    .score {
+        margin-top: 20px;
+        font-size: 20px;
+    }
+</style>
+
+<!-- YOUR NAME -->
+<div class="top-name">
+    Amira Rashed
+</div>
+
+<!-- START SCREEN -->
+@if (Context.Request.Query["start"] != "true")
+{
+    <div class="start-screen">
+        <h1>Rock Paper Scissors</h1>
+
+        <form method="get">
+            <button class="start-btn" name="start" value="true">▶️ Start Game</button>
+        </form>
+    </div>
+}
+else
+{
+    <div class="container">
+        <h1>Rock Paper Scissors</h1>
+
+        <!-- GAME BUTTONS -->
+        <form method="post" action="/Home/Play?start=true">
+            <div class="buttons">
+                <button class="choice" name="userChoice" value="Rock">
+                    <span class="hand">✊</span>Rock
+                </button>
+
+                <button class="choice" name="userChoice" value="Paper">
+                    <span class="hand">✋</span>Paper
+                </button>
+
+                <button class="choice" name="userChoice" value="Scissors">
+                    <span class="hand">✌️</span>Scissors
+                </button>
+            </div>
+        </form>
+
+        <!-- RESULT -->
+        @if (ViewBag.Result != null)
+        {
+            <div class="result">
+                <p>You chose: @ViewBag.User</p>
+                <p>Computer chose: @ViewBag.Computer</p>
+                <h2>@ViewBag.Result</h2>
+
+                <!-- SOUND -->
+                <audio autoplay>
+                    <source src="@(ViewBag.Result.Contains("Win") ? "/win.mp3" : ViewBag.Result.Contains("Lose") ? "/lose.mp3" : "/tie.mp3")" type="audio/mpeg">
+                </audio>
+
+                <!-- SCORE -->
+                <div class="score">
+                    <p>Wins: @ViewBag.Wins</p>
+                    <p>Losses: @ViewBag.Losses</p>
+                    <p>Ties: @ViewBag.Ties</p>
+                </div>
+
+                <br />
+
+                <!-- RESET -->
+                <form method="get" action="/Home/Reset">
+                    <input type="hidden" name="start" value="true" />
+                    <button class="start-btn">🔄 Reset Score</button>
+                </form>
+
+                <!-- PLAY AGAIN -->
+                <form method="get">
+                    <input type="hidden" name="start" value="true" />
+                    <button class="start-btn">▶️ Play Again</button>
+                </form>
+            </div>
+        }
+    </div>
+}
