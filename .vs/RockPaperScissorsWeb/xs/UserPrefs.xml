@@ -1,4 +1,4 @@
 ﻿<Properties StartupConfiguration="{9C269DEA-6C58-48B5-B2F0-C38DC9CD36F3}|https">
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.RockPaperScissorsWeb FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.RockPaperScissorsWeb PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>
