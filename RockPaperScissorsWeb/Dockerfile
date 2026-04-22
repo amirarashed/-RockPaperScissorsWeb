@@ -1,15 +1,16 @@
 ﻿FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /app
+WORKDIR /src
 
-COPY . ./
+COPY . .
 
-WORKDIR /app/RockPaperScissorsWeb
+WORKDIR /src/RockPaperScissorsWeb
 RUN dotnet restore
-RUN dotnet publish -c Release -o out
+RUN dotnet publish -c Release -o /app/publish
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
-COPY --from=build /app/RockPaperScissorsWeb/out .
+
+COPY --from=build /app/publish .
 
 EXPOSE 10000
 ENV ASPNETCORE_URLS=http://+:10000
